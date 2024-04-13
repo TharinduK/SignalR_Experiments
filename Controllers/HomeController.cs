@@ -22,6 +22,11 @@ namespace SignalRSample.Controllers
 			return View();
 		}
 
+		public IActionResult Harry()
+		{
+			return View();
+		}
+
 		public IActionResult DeathlyHallows(string type)
 		{
 			switch (type.ToLower())
