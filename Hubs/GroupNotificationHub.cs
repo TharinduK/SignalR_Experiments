@@ -2,7 +2,7 @@
 
 namespace SignalRSample.Hubs
 {
-	public class HarryHousesHub:Hub
+	public class GroupNotificationHub:Hub
 	{
 		public static List<string> JoinedHousList { get; set; } = new List<string>();
 
