@@ -45,6 +45,8 @@ app.MapHub<RaceHub>("/hubs/RaceVotes");
 app.MapHub<GroupNotificationHub>("/hubs/harryHouses");
 app.MapHub<ChatNotificationHub>("/hubs/chat");
 app.MapHub<ChatHub>("/hubs/chathub");
+app.MapHub<OrderHub>("/hubs/order");
+
 app.MapRazorPages();
 
 app.Run();
