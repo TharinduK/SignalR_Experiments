@@ -1,6 +1,7 @@
 ﻿// Create connection with hub
 var raceVoteCount = new signalR.HubConnectionBuilder()
-    .withUrl("/hubs/userCount", signalR.HttpTransportType.LongPolling)          //or
+    .withUrl("/hubs/userCount", signalR.HttpTransportType.LongPolling)          
+    .withAutomaticReconnect()
     .configureLogging(signalR.LogLevel.Trace)
 .build();
 
@@ -15,7 +16,17 @@ raceVoteCount.on("updateTotalSession", (value) => {
     newCountSpan.innerText = value.toString();
 });
 
+raceVoteCount.onclose((error) => {
+    document.body.style.background = "red";
+});
 
+raceVoteCount.onreconnected((connectionID) => {
+    document.body.style.background = "green";
+});
+
+raceVoteCount.onreconnecting((error) => {
+    document.body.style.background = "orange";
+});
 
 //invoke hub methods (hub method name) aka send notification to hub (no response back from server)
 function newWindowLoadedOnClient() {

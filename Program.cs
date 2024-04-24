@@ -14,7 +14,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 	.AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
-builder.Services.AddSignalR();
+
+//setup azure signal R
+var azureConnection = "Endpoint=https://tk-test-sigr.service.signalr.net;AccessKey=4pNABEA4d1vfXtj3gGLfOR/A08EdTssDq8HRW+AmLdw=;Version=1.0;";
+builder.Services.AddSignalR().AddAzureSignalR(azureConnection);
+
 
 var app = builder.Build();
 
